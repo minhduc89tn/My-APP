@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/border_radius"
+        android:editable="true"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Nhập địa điểm cần tìm"
+        android:inputType="text"
+        android:paddingLeft="40dp"
+        android:textColor="?android:attr/colorActivatedHighlight"
+        android:textColorHint="@android:color/holo_orange_light"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:clickable="true"
+        android:padding="10dp"
+        android:onClick="pickMaps"
+        android:text="Chọn vị trí trên bản đồ" />
+
+</RelativeLayout>

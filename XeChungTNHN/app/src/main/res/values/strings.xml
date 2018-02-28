@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Xe Chung TNHN</string>
+    <string name="title_activity_maps">Xe Chung</string>
+    <string name="title_activity_pick_maps">Pick Map</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>
