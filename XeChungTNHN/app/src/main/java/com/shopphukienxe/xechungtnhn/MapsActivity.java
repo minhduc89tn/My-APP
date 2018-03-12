@@ -65,6 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static String Duration;
 
     private LatLng current_location;
+    public static LatLng picklocation;
 
     private final LatLng mDefaultLocation = new LatLng(21.5458491, 105.8678594);
     private static final int DEFAULT_ZOOM = 16;
@@ -183,7 +184,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void searchLocation(View view){
         Intent intent = new Intent(this,SearchLocationActivity.class);
         startActivity(intent);
-        ConvertTextToSpeech("Chọn điểm đón sau đó bấm xác nhận");
+        //ConvertTextToSpeech("Chọn điểm đón sau đó bấm xác nhận");
     }
     //Chuyển văn bản thành giọng nói
     @Override

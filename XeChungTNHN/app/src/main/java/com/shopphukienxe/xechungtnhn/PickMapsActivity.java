@@ -5,6 +5,7 @@ import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -13,23 +14,27 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-public class PickMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class PickMapsActivity extends FragmentActivity implements OnMapReadyCallback
+         {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
     private LatLng current_location;
     private static final int DEFAULT_ZOOM = 16;
     private final LatLng mDefaultLocation = new LatLng(21.5458491, 105.8678594);
+    private TextView txtAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_maps);
+        txtAddr = (TextView)findViewById(R.id.txtAddr);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -69,6 +74,16 @@ public class PickMapsActivity extends FragmentActivity implements OnMapReadyCall
         //mMap.getUiSettings().setMapToolbarEnabled(true);
         if( current_location == null ) mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
         else mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current_location, DEFAULT_ZOOM));
+        mMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener(){
+            @Override
+            public void onCameraIdle(){
+                LatLng position = mMap.getCameraPosition().target;
+                txtAddr.setText(position.latitude + "," +position.longitude);
+                MapsActivity.picklocation = position;
+            }
+        });
     }
-
+    public void addMap(){
+        LatLng latLng = mMap.getCameraPosition().target;
+    }
 }
